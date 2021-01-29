@@ -85,4 +85,9 @@ margin_top = 453.987
 margin_right = 915.039
 margin_bottom = 517.987
 
+[node name="Tap_tween" type="Tween" parent="."]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 510, 300 )
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
