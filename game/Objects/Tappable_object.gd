@@ -11,3 +11,6 @@ func _on_Tappable_object_pressed() -> void:
 
 func select_type() -> void:
 	modulate = Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0), 1.0)
+
+func trash() -> void:
+	anim.play("trash")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/temp_dude.PNG" type="Texture" id=2]
@@ -6,6 +6,43 @@
 [ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Objects/Tappable_object.tscn" type="PackedScene" id=6]
+[ext_resource path="res://temp_request_bubble.PNG" type="Texture" id=7]
+[ext_resource path="res://Objects/temp_cauldron.PNG" type="Texture" id=8]
+[ext_resource path="res://Objects/temp_speech_bubble.PNG" type="Texture" id=9]
+[ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
+[ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
+[ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
+[ext_resource path="res://Objects/temp_trash.PNG" type="Texture" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("temp_hate:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "love"
+tracks/0/type = "value"
+tracks/0/path = NodePath("temp_love:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
@@ -16,6 +53,64 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="temp_cauldron" type="Sprite" parent="."]
+position = Vector2( 510, 300 )
+texture = ExtResource( 8 )
+
+[node name="temp_speech_bubble" type="Sprite" parent="."]
+position = Vector2( 672.807, 101.566 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="temp_speech_bubble"]
+margin_left = -58.007
+margin_top = -82.4881
+margin_right = 68.993
+margin_bottom = 46.5119
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Label to cover the speech bubble"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="temp_request_bubble" type="Sprite" parent="."]
+position = Vector2( 355.166, 100.067 )
+texture = ExtResource( 7 )
+
+[node name="temp_love" type="Sprite" parent="."]
+visible = false
+position = Vector2( 575.417, 38.6369 )
+texture = ExtResource( 10 )
+
+[node name="temp_hate" type="Sprite" parent="."]
+visible = false
+position = Vector2( 460.048, 37.1385 )
+texture = ExtResource( 11 )
+
+[node name="Trash_button" type="TextureButton" parent="."]
+visible = false
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 331.0
+margin_bottom = 337.0
+texture_normal = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Okay_button" type="TextureButton" parent="."]
+visible = false
+margin_left = 690.0
+margin_top = 250.0
+margin_right = 797.0
+margin_bottom = 353.0
+texture_normal = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -80,14 +175,23 @@ margin_right = 724.754
 margin_bottom = 529.974
 
 [node name="Tappable_object5" parent="Node" instance=ExtResource( 6 )]
-margin_left = 851.039
+margin_left = 849.541
 margin_top = 453.987
-margin_right = 915.039
+margin_right = 913.541
 margin_bottom = 517.987
+
+[node name="Tappable_object6" parent="Node" instance=ExtResource( 6 )]
+margin_left = 930.449
+margin_top = 386.563
+margin_right = 994.449
+margin_bottom = 450.563
 
 [node name="Tap_tween" type="Tween" parent="."]
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 510, 300 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hate = SubResource( 1 )
+anims/love = SubResource( 2 )
 
+[connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
+[connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
