@@ -3,6 +3,7 @@ extends Control
 
 
 func _on_Start_button_pressed():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene_to(load("res://Levels/Level.tscn"))
 	
 

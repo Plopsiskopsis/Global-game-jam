@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sieppaa.PNG-fb0081870d4a964beff422ed3516c99e.stex"
+path="res://.import/ref.PNG-43839421f815c9610742ea664e47475c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Sieppaa.PNG"
-dest_files=[ "res://.import/Sieppaa.PNG-fb0081870d4a964beff422ed3516c99e.stex" ]
+source_file="res://Levels/ref.PNG"
+dest_files=[ "res://.import/ref.PNG-43839421f815c9610742ea664e47475c.stex" ]
 
 [params]
 
