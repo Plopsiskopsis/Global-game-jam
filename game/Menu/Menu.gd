@@ -1,6 +1,7 @@
 extends Control
 
-
+func _ready():
+	randomize() # for getting random seed in game
 
 func _on_Start_button_pressed():
 # warning-ignore:return_value_discarded
