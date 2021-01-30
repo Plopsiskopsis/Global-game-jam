@@ -65,10 +65,9 @@ func trash_hand() -> void:
 	select_needed_types()
 
 func set_new_hand() -> void:
-	for j in Global.ingredient_types.size():
+	for j in get_tree().get_nodes_in_group("POS"):
 		var tappable :Object = tappable_scn.instance()
-		tappable.rect_position.x = rand_range(20.0, 460.0)
-		tappable.rect_position.y = rand_range(490.0, 820.0)
+		tappable.rect_position = j.position
 		$Tappables.add_child(tappable)
 
 func select_needed_types() -> void:
@@ -81,11 +80,11 @@ func select_needed_types() -> void:
 			needed_types.append("Ash")
 			needed_types.append("Bat wing")
 			needed_types.append("Dragon scale")
-		"Fire feather": 
+		"Fire feather":
 			needed_types.append("Feather")
 			needed_types.append("Amber")
 			needed_types.append("Ash")
-		"Jelly potion": 
+		"Jelly potion":
 			needed_types.append("Jelly")
 			needed_types.append("Berries")
 			needed_types.append("Mushroom")
