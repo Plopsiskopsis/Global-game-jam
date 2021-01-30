@@ -6,6 +6,7 @@ var selectable :bool = true
 
 func _ready() -> void:
 	select_type()
+	anim.play("start")
 
 func _on_Tappable_object_pressed() -> void:
 	if Global.level.selection_available && selectable:
