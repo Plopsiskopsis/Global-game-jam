@@ -18,16 +18,10 @@
 [ext_resource path="res://Levels/Graphics/Background_Door.png" type="Texture" id=16]
 [ext_resource path="res://Objects/temp_angry_face.PNG" type="Texture" id=17]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -36,18 +30,24 @@ shader = ExtResource( 15 )
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 15 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 15 )
+
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
-tracks/0/path = NodePath("temp_hate:visible")
+tracks/0/path = NodePath("Top_center/temp_hate:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -83,9 +83,9 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
-tracks/0/path = NodePath("temp_love:visible")
+tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -109,8 +109,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "new_shopper"
+[sub_resource type="Animation" id=12]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -164,76 +163,91 @@ tracks/3/keys = {
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Background" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 16 )
+[node name="Background_Tiling" type="TextureRect" parent="."]
+margin_right = 512.0
+margin_bottom = 1024.0
+texture = ExtResource( 3 )
 expand = true
+stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background_Tile" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 125.088, 470.109 )
-texture = ExtResource( 3 )
+[node name="BackgroundContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = -2.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
-[node name="Background_Tile2" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 109.374, 225.412 )
-texture = ExtResource( 3 )
+[node name="Background_Door" type="Sprite" parent="BackgroundContainer"]
+position = Vector2( 254.413, 263.269 )
+scale = Vector2( 0.862041, 0.862041 )
+texture = ExtResource( 16 )
 
-[node name="Background_Tile3" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 102.639, 18.8794 )
-texture = ExtResource( 3 )
+[node name="Top_center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.000244141
+margin_bottom = -300.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Background_Tile4" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 331.621, 16.6345 )
-texture = ExtResource( 3 )
+[node name="Temp_dude" type="TextureRect" parent="Top_center"]
+material = SubResource( 7 )
+margin_left = 198.0
+margin_top = 280.0
+margin_right = 313.0
+margin_bottom = 444.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Background_Tile5" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 562.848, -1.32492 )
-texture = ExtResource( 3 )
+[node name="Happy_face" type="Sprite" parent="Top_center/Temp_dude"]
+visible = false
+material = SubResource( 8 )
+position = Vector2( 2.47597, 6.32451 )
+scale = Vector2( 1.32646, 1.28301 )
+texture = ExtResource( 14 )
+centered = false
 
-[node name="Background_Tile6" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 782.851, 3.16492 )
-texture = ExtResource( 3 )
+[node name="Angry_face" type="Sprite" parent="Top_center/Temp_dude"]
+visible = false
+material = SubResource( 8 )
+position = Vector2( 10.422, 4.20558 )
+scale = Vector2( 1.28284, 1.28301 )
+texture = ExtResource( 17 )
+centered = false
 
-[node name="Background_Tile7" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 935.506, 61.533 )
-texture = ExtResource( 3 )
+[node name="temp_love" type="Sprite" parent="Top_center"]
+visible = false
+material = SubResource( 3 )
+position = Vector2( 256, 40.224 )
+texture = ExtResource( 10 )
 
-[node name="Background_Tile8" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 935.506, 61.533 )
-texture = ExtResource( 3 )
-
-[node name="Background_Tile9" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 1011.83, 295.005 )
-texture = ExtResource( 3 )
-
-[node name="Background_Tile10" type="Sprite" parent="Background"]
-show_behind_parent = true
-position = Vector2( 1041.02, 474.599 )
-texture = ExtResource( 3 )
-
-[node name="temp_cauldron" type="Sprite" parent="."]
-material = SubResource( 1 )
-position = Vector2( 510, 300 )
-texture = ExtResource( 8 )
+[node name="temp_hate" type="Sprite" parent="Top_center"]
+visible = false
+material = SubResource( 4 )
+position = Vector2( 256, 38.726 )
+texture = ExtResource( 11 )
 
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 387.109, 165.406 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
+visible = false
 material = SubResource( 2 )
-position = Vector2( 650.212, 132.485 )
+position = Vector2( 257.587, 132.485 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="temp_speech_bubble"]
@@ -250,21 +264,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="temp_love" type="Sprite" parent="."]
-visible = false
-material = SubResource( 9 )
-position = Vector2( 575.417, 38.6369 )
-texture = ExtResource( 10 )
-
-[node name="temp_hate" type="Sprite" parent="."]
-visible = false
-material = SubResource( 10 )
-position = Vector2( 460.048, 37.1385 )
-texture = ExtResource( 11 )
-
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 3 )
+material = SubResource( 5 )
 margin_left = 250.0
 margin_top = 250.0
 margin_right = 331.0
@@ -276,7 +278,7 @@ __meta__ = {
 
 [node name="Okay_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 4 )
+material = SubResource( 6 )
 margin_left = 690.0
 margin_top = 250.0
 margin_right = 797.0
@@ -286,42 +288,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top_center" type="CenterContainer" parent="."]
+[node name="Ingredients_Container" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.00012207
-margin_bottom = -300.0
+margin_left = 2.0
+margin_top = 483.0
+margin_right = 2.0
+margin_bottom = -176.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Temp_dude" type="TextureRect" parent="Top_center"]
-material = SubResource( 5 )
-margin_left = 454.0
-margin_top = 68.0
-margin_right = 569.0
-margin_bottom = 232.0
-texture = ExtResource( 2 )
+[node name="Cauldron_Container" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 719.0
+margin_right = 2.0
+margin_bottom = 55.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Happy_face" type="Sprite" parent="Top_center/Temp_dude"]
-visible = false
-material = SubResource( 12 )
-position = Vector2( 2.47597, 6.32451 )
-scale = Vector2( 1.32646, 1.28301 )
-texture = ExtResource( 14 )
-centered = false
+[node name="temp_cauldron" type="Sprite" parent="Cauldron_Container"]
+material = SubResource( 1 )
+position = Vector2( 254.413, 200 )
+texture = ExtResource( 8 )
 
-[node name="Angry_face" type="Sprite" parent="Top_center/Temp_dude"]
-visible = false
-material = SubResource( 12 )
-position = Vector2( 10.422, 4.20558 )
-scale = Vector2( 1.28284, 1.28301 )
-texture = ExtResource( 17 )
-centered = false
-
-[node name="TextureButton" type="TextureButton" parent="."]
-material = SubResource( 6 )
+[node name="MenuButton" type="TextureButton" parent="."]
+material = SubResource( 9 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 4 )
@@ -330,11 +327,13 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="."]
-margin_left = 840.0
-margin_right = 978.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 502.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 5 )
-text = "Score 0"
+text = "Score 00000"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -344,21 +343,20 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 7 )
-anims/love = SubResource( 8 )
+anims/hate = SubResource( 10 )
+anims/love = SubResource( 11 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/new_shopper = SubResource( 11 )
+anims/new_shopper = SubResource( 12 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 804.822, 562.222 )
+position = Vector2( 256, 562.222 )
 
 [node name="Item_Failure_Goo" type="Sprite" parent="."]
 visible = false
-position = Vector2( 505.964, 281.704 )
+position = Vector2( 256, 281.704 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
-
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
