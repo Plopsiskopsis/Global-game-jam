@@ -10,7 +10,9 @@ config_version=4
 
 [application]
 
+config/name="Lost Formula"
 run/main_scene="res://Menu/Menu.tscn"
+config/icon="res://Objects/Graphics/Ingredient_Berries.png"
 
 [autoload]
 

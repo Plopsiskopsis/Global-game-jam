@@ -226,39 +226,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node" type="Node" parent="."]
+[node name="Tappables" type="Node" parent="."]
 
-[node name="Tappable_object" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 47.9459
 margin_top = 458.482
 margin_right = 111.946
 margin_bottom = 522.482
 
-[node name="Tappable_object2" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object2" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 268.197
 margin_top = 465.974
 margin_right = 332.197
 margin_bottom = 529.974
 
-[node name="Tappable_object3" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object3" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 458.482
 margin_top = 464.475
 margin_right = 522.482
 margin_bottom = 528.475
 
-[node name="Tappable_object4" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object4" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 660.754
 margin_top = 465.974
 margin_right = 724.754
 margin_bottom = 529.974
 
-[node name="Tappable_object5" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object5" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 849.541
 margin_top = 453.987
 margin_right = 913.541
 margin_bottom = 517.987
 
-[node name="Tappable_object6" parent="Node" instance=ExtResource( 6 )]
+[node name="Tappable_object6" parent="Tappables" instance=ExtResource( 6 )]
 margin_left = 930.449
 margin_top = 386.563
 margin_right = 994.449

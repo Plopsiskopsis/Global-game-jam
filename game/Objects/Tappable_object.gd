@@ -3,8 +3,8 @@ extends TextureButton
 onready var anim = $AnimationPlayer
 var type :String
 
-func _ready() -> void:
-	select_type()
+#func _ready() -> void:
+#	select_type()
 
 func _on_Tappable_object_pressed() -> void:
 	anim.play("tapped")
@@ -16,7 +16,8 @@ func trash() -> void:
 func select_type() -> void:
 	var ind :int = randi() % Global.ingredient_types.size()
 	type = Global.ingredient_types[ind]
-	print(type)
+	Global.selected_types.append(type)
+	#print(type)
 	match type:
 		"Amber":
 			texture_normal = load("res://Objects/Graphics/Ingredient_Amber.png")

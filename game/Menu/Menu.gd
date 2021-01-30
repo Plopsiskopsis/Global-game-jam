@@ -7,7 +7,6 @@ func _on_Start_button_pressed() -> void:
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(load("res://Levels/Level.tscn"))
 	Global.set_types()
-	
 
 
 func _on_Music_button_pressed() -> void:
