@@ -44,7 +44,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "trash"
 length = 0.6
 step = 0.05
@@ -99,7 +99,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 16, 16, 1 )
 flag_disable_z = true
@@ -123,7 +123,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/tapped = SubResource( 1 )
-anims/trash = SubResource( 3 )
+anims/trash = SubResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 32, 32 )
@@ -131,7 +131,7 @@ emitting = false
 amount = 64
 lifetime = 0.3
 one_shot = true
-process_material = SubResource( 2 )
+process_material = SubResource( 3 )
 texture = ExtResource( 2 )
 
 [connection signal="pressed" from="." to="." method="_on_Tappable_object_pressed"]

@@ -3,8 +3,8 @@ extends TextureButton
 onready var anim = $AnimationPlayer
 var type :String
 
-#func _ready() -> void:
-#	select_type()
+func _ready() -> void:
+	select_type()
 
 func _on_Tappable_object_pressed() -> void:
 	anim.play("tapped")

@@ -5,8 +5,7 @@
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=3]
 [ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Objects/Tappable_object.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Objects/temp_request_bubble.PNG" type="Texture" id=7]
+[ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/temp_cauldron.PNG" type="Texture" id=8]
 [ext_resource path="res://Objects/temp_speech_bubble.PNG" type="Texture" id=9]
 [ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
@@ -22,6 +21,12 @@ shader = ExtResource( 15 )
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 15 )
 
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 15 )
+
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 15 )
 
@@ -34,10 +39,7 @@ shader = ExtResource( 15 )
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 15 )
-
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("temp_hate:visible")
 tracks/0/interp = 1
@@ -51,7 +53,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("temp_love:visible")
 tracks/0/interp = 1
@@ -132,6 +134,8 @@ material = SubResource( 1 )
 position = Vector2( 510, 300 )
 texture = ExtResource( 8 )
 
+[node name="Requested_item" parent="." instance=ExtResource( 7 )]
+
 [node name="temp_speech_bubble" type="Sprite" parent="."]
 material = SubResource( 2 )
 position = Vector2( 672.807, 101.566 )
@@ -151,24 +155,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="temp_request_bubble" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( 355.166, 100.067 )
-texture = ExtResource( 7 )
-
 [node name="temp_love" type="Sprite" parent="."]
 visible = false
+material = SubResource( 9 )
 position = Vector2( 575.417, 38.6369 )
 texture = ExtResource( 10 )
 
 [node name="temp_hate" type="Sprite" parent="."]
 visible = false
+material = SubResource( 10 )
 position = Vector2( 460.048, 37.1385 )
 texture = ExtResource( 11 )
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 4 )
+material = SubResource( 3 )
 margin_left = 250.0
 margin_top = 250.0
 margin_right = 331.0
@@ -180,7 +181,7 @@ __meta__ = {
 
 [node name="Okay_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 5 )
+material = SubResource( 4 )
 margin_left = 690.0
 margin_top = 250.0
 margin_right = 797.0
@@ -200,7 +201,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Top_center"]
-material = SubResource( 6 )
+material = SubResource( 5 )
 margin_left = 454.0
 margin_top = 68.0
 margin_right = 569.0
@@ -208,7 +209,7 @@ margin_bottom = 232.0
 texture = ExtResource( 2 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
-material = SubResource( 7 )
+material = SubResource( 6 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 4 )
@@ -228,47 +229,14 @@ __meta__ = {
 
 [node name="Tappables" type="Node" parent="."]
 
-[node name="Tappable_object" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 47.9459
-margin_top = 458.482
-margin_right = 111.946
-margin_bottom = 522.482
-
-[node name="Tappable_object2" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 268.197
-margin_top = 465.974
-margin_right = 332.197
-margin_bottom = 529.974
-
-[node name="Tappable_object3" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 458.482
-margin_top = 464.475
-margin_right = 522.482
-margin_bottom = 528.475
-
-[node name="Tappable_object4" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 660.754
-margin_top = 465.974
-margin_right = 724.754
-margin_bottom = 529.974
-
-[node name="Tappable_object5" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 849.541
-margin_top = 453.987
-margin_right = 913.541
-margin_bottom = 517.987
-
-[node name="Tappable_object6" parent="Tappables" instance=ExtResource( 6 )]
-margin_left = 930.449
-margin_top = 386.563
-margin_right = 994.449
-margin_bottom = 450.563
-
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 8 )
-anims/love = SubResource( 9 )
+anims/hate = SubResource( 7 )
+anims/love = SubResource( 8 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 804.822, 562.222 )
 
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]

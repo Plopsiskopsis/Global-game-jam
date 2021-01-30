@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Graphics/Item_Fire_Feather.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Requested_item.gd" type="Script" id=2]
+
+[node name="Requested_item" type="Sprite"]
+position = Vector2( 355, 100 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

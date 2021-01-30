@@ -5,6 +5,9 @@ var level :Object
 var ingredient_types :Array = []
 var selected_types :Array = []
 
+var requestable_items :Array = ["Black powder", "Fire Feather", "Flower potion",
+ "Jelly potion", "Purple pendant"]
+
 func _ready():
 	set_types()
 
