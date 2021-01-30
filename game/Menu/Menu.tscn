@@ -102,10 +102,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 417.0
-margin_top = 222.0
-margin_right = 607.0
-margin_bottom = 377.0
+margin_left = 161.0
+margin_top = 434.0
+margin_right = 351.0
+margin_bottom = 589.0
 
 [node name="Start_button" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )

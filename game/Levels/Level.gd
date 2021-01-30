@@ -20,7 +20,7 @@ func _on_TextureButton_pressed() -> void:
 	get_tree().change_scene_to(load("res://Menu/Menu.tscn"))
 
 func tapped(obj :Object) -> void:
-	tap_tween.interpolate_property(obj, "rect_position", obj.rect_position, Vector2(446.0 + rand_range(-64.0, 128.0), 280.0 + rand_range(-40.0, 20.0)), 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tap_tween.interpolate_property(obj, "rect_position", obj.rect_position, Vector2(120.0 + rand_range(0.0, 250.0), 870.0 + rand_range(0.0, 50.0)), 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tap_tween.start()
 	selected.append(obj)
 	if selected.size() >= 3:
@@ -67,8 +67,8 @@ func trash_hand() -> void:
 func set_new_hand() -> void:
 	for j in Global.ingredient_types.size():
 		var tappable :Object = tappable_scn.instance()
-		tappable.rect_position.x = rand_range(40.0, 980.0)
-		tappable.rect_position.y = rand_range(390.0, 540.0)
+		tappable.rect_position.x = rand_range(20.0, 460.0)
+		tappable.rect_position.y = rand_range(490.0, 820.0)
 		$Tappables.add_child(tappable)
 
 func select_needed_types() -> void:
