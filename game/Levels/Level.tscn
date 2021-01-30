@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://Objects/temp_dude.PNG" type="Texture" id=2]
+[ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=3]
 [ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
@@ -13,10 +13,12 @@
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
 [ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
 [ext_resource path="res://Objects/temp_trash.PNG" type="Texture" id=13]
-[ext_resource path="res://Objects/temp_happy_face.PNG" type="Texture" id=14]
-[ext_resource path="res://clear.shader" type="Shader" id=15]
+[ext_resource path="res://shaders/clear2.shader" type="Shader" id=14]
+[ext_resource path="res://shaders/clear.shader" type="Shader" id=15]
 [ext_resource path="res://Levels/Graphics/Background_Door.png" type="Texture" id=16]
-[ext_resource path="res://Objects/temp_angry_face.PNG" type="Texture" id=17]
+[ext_resource path="res://Objects/Graphics/NPC_1_Unhappy.png" type="Texture" id=17]
+[ext_resource path="res://Objects/Graphics/NPC_1_Happy.png" type="Texture" id=18]
+[ext_resource path="res://shaders/clear3.shader" type="Shader" id=19]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -58,30 +60,26 @@ scale = 1.5
 color_ramp = SubResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 15 )
+shader = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=9]
-shader = ExtResource( 15 )
+shader = ExtResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 15 )
+shader = ExtResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=11]
-shader = ExtResource( 15 )
+shader = ExtResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 15 )
 
-[sub_resource type="ShaderMaterial" id=13]
-shader = ExtResource( 15 )
-
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
 tracks/0/interp = 1
@@ -107,7 +105,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Top_center/Temp_dude/Angry_face:visible")
+tracks/2/path = NodePath("Top_center/NPC:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -116,10 +114,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ ExtResource( 17 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -133,7 +131,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Top_center/Temp_dude/Happy_face:visible")
+tracks/1/path = NodePath("Top_center/NPC:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -142,10 +140,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ ExtResource( 18 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -157,7 +155,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 203.354, 89.1905 ), Vector2( -200, 89.191 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 127.961, 151.532 ), Vector2( 276.126, 182.961 ), Vector2( -37.2658, 193.288 ), Vector2( 127.961, 151.532 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Top_center:modulate")
@@ -294,59 +292,45 @@ position = Vector2( 258.996, 763.534 )
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.00152588
-margin_bottom = -300.0
+margin_left = 127.961
+margin_top = 151.532
+margin_right = 127.961
+margin_bottom = -148.468
+rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Temp_dude" type="TextureRect" parent="Top_center"]
+[node name="NPC" type="TextureRect" parent="Top_center"]
 material = SubResource( 6 )
-margin_left = 198.0
-margin_top = 280.0
-margin_right = 313.0
-margin_bottom = 444.0
+margin_top = 55.0
+margin_right = 512.0
+margin_bottom = 669.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Happy_face" type="Sprite" parent="Top_center/Temp_dude"]
-visible = false
-material = SubResource( 7 )
-position = Vector2( 2.47597, 6.32451 )
-scale = Vector2( 1.32646, 1.28301 )
-texture = ExtResource( 14 )
-centered = false
-
-[node name="Angry_face" type="Sprite" parent="Top_center/Temp_dude"]
-visible = false
-material = SubResource( 7 )
-position = Vector2( 10.422, 4.20558 )
-scale = Vector2( 1.28284, 1.28301 )
-texture = ExtResource( 17 )
-centered = false
-
 [node name="temp_love" type="Sprite" parent="Top_center"]
 visible = false
-material = SubResource( 8 )
-position = Vector2( 287.113, 258.013 )
+material = SubResource( 7 )
+position = Vector2( 290.288, 200.867 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="temp_hate" type="Sprite" parent="Top_center"]
 visible = false
-material = SubResource( 9 )
-position = Vector2( 220.645, 252.272 )
+material = SubResource( 8 )
+position = Vector2( 125.401, 176.077 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 165.078, 356.325 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
-visible = false
-material = SubResource( 10 )
+material = SubResource( 9 )
 position = Vector2( 386.28, 306.433 )
 texture = ExtResource( 9 )
 
@@ -366,7 +350,7 @@ __meta__ = {
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 11 )
+material = SubResource( 10 )
 margin_left = 9.58368
 margin_top = 865.183
 margin_right = 90.5837
@@ -378,7 +362,7 @@ __meta__ = {
 
 [node name="Okay_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 12 )
+material = SubResource( 11 )
 margin_left = 402.915
 margin_top = 863.769
 margin_right = 509.915
@@ -399,7 +383,7 @@ __meta__ = {
 }
 
 [node name="MenuButton" type="TextureButton" parent="."]
-material = SubResource( 13 )
+material = SubResource( 12 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 4 )
@@ -422,11 +406,11 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 14 )
-anims/love = SubResource( 15 )
+anims/hate = SubResource( 13 )
+anims/love = SubResource( 14 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/new_shopper = SubResource( 16 )
+anims/new_shopper = SubResource( 15 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 246.1, 905.876 )
