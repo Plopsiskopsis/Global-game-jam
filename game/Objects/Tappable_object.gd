@@ -7,8 +7,9 @@ func _ready() -> void:
 	select_type()
 
 func _on_Tappable_object_pressed() -> void:
-	anim.play("tapped")
-	Global.level.tapped(self)
+	if Global.level.selection_available:
+		anim.play("tapped")
+		Global.level.tapped(self)
 
 func trash() -> void:
 	anim.play("trash")
@@ -23,11 +24,11 @@ func select_type() -> void:
 			texture_normal = load("res://Objects/Graphics/Ingredient_Amber.png")
 		"Ash":
 			texture_normal = load("res://Objects/Graphics/Ingredient_Ash.png")
-		"Bat Wing":
+		"Bat wing":
 			texture_normal = load("res://Objects/Graphics/Ingredient_BatWing.png")
 		"Berries":
 			texture_normal = load("res://Objects/Graphics/Ingredient_Berries.png")
-		"Dragon Scale":
+		"Dragon scale":
 			texture_normal = load("res://Objects/Graphics/Ingredient_DragonScale.png")
 		"Feather":
 			texture_normal = load("res://Objects/Graphics/Ingredient_Feather.png")

@@ -1,9 +1,13 @@
 extends Node
 
-onready var tap_tween = $Tap_tween
+onready var tap_tween :Object = $Tap_tween
+onready var score_lbl :Object = $Score
+onready var anim :Object = $AnimationPlayer
 onready var tappable_scn :PackedScene = load("res://Objects/Tappable_object.tscn")
 var selected :Array = []
 var needed_types : Array = []
+var score :int = 0
+var selection_available :bool = true
 
 func _ready() -> void:
 	Global.level = self
@@ -19,16 +23,36 @@ func tapped(obj :Object) -> void:
 	tap_tween.start()
 	selected.append(obj)
 	if selected.size() >= 3:
+		selection_available = false
 		$Trash_button.show()
 		$Okay_button.show()
 
-func _on_Trash_button_pressed():
+func _on_Trash_button_pressed() -> void:
 	trash_hand()
+	selection_available = true
 
-func _on_Okay_button_pressed():
+func _on_Okay_button_pressed() -> void:
+	var correct :int = 0
+	print(needed_types)
+	for y in selected:
+		print(y.type)
+	for j in needed_types:
+		var incorrect :int = 0
+		for i in selected:
+			if i.type == j:
+				correct += 1
+	if correct >= needed_types.size():
+		score += 1
+		score_lbl.text = str(score)
+		anim.play("love")
+	else:
+		score -= 1
+		score_lbl.text = str(score)
+		anim.play("hate")
 	trash_hand()
+	selection_available = true
 
-func trash_hand():
+func trash_hand() -> void:
 	for i in $Tappables.get_child_count():
 		$Tappables.get_child(i).trash()
 	selected.clear()
@@ -38,24 +62,24 @@ func trash_hand():
 	set_new_hand()
 	select_needed_types()
 
-func set_new_hand():
+func set_new_hand() -> void:
 	for j in Global.ingredient_types.size():
 		var tappable :Object = tappable_scn.instance()
 		tappable.rect_position.x = rand_range(40.0, 980.0)
-		tappable.rect_position.y = rand_range(390.0, 560.0)
+		tappable.rect_position.y = rand_range(390.0, 540.0)
 		$Tappables.add_child(tappable)
 
-func select_needed_types():
+func select_needed_types() -> void:
 	$Requested_item.select_requested_item()
 #	for j in $Tappables.get_child_count():
 #		$Tappables.get_child(j).select_type()
 	needed_types.clear()
 	match $Requested_item.requested_type:
 		"Black powder":
-			needed_types.append("ash")
+			needed_types.append("Ash")
 			needed_types.append("Bat wing")
 			needed_types.append("Dragon scale")
-		"Fire Feather": 
+		"Fire feather": 
 			needed_types.append("Feather")
 			needed_types.append("Amber")
 			needed_types.append("Ash")
