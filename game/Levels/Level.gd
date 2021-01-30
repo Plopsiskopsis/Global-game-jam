@@ -3,6 +3,7 @@ extends Node
 onready var tap_tween :Object = $Tap_tween
 onready var score_lbl :Object = $Score
 onready var anim :Object = $AnimationPlayer
+onready var shopper_anim :Object = $Shopper_anim
 onready var tappable_scn :PackedScene = load("res://Objects/Tappable_object.tscn")
 var selected :Array = []
 var needed_types : Array = []
@@ -45,10 +46,12 @@ func _on_Okay_button_pressed() -> void:
 		score += 1
 		score_lbl.text = str(score)
 		anim.play("love")
+		shopper_anim.play("new_shopper")
 	else:
 		score -= 1
 		score_lbl.text = str(score)
 		anim.play("hate")
+		shopper_anim.play("new_shopper")
 	trash_hand()
 	selection_available = true
 

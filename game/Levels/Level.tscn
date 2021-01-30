@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/temp_dude.PNG" type="Texture" id=2]
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=3]
 [ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Objects/Graphics/Item_Failure_Goo.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/temp_cauldron.PNG" type="Texture" id=8]
 [ext_resource path="res://Objects/temp_speech_bubble.PNG" type="Texture" id=9]
@@ -52,6 +53,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Item_Failure_Goo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -65,6 +78,58 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "new_shopper"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 203.354, 89.1905 ), Vector2( -200, 89.191 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Level" type="Node"]
@@ -135,10 +200,11 @@ position = Vector2( 510, 300 )
 texture = ExtResource( 8 )
 
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
+position = Vector2( 387.109, 165.406 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 672.807, 101.566 )
+position = Vector2( 650.212, 132.485 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="temp_speech_bubble"]
@@ -194,6 +260,7 @@ __meta__ = {
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -0.00012207
 margin_bottom = -300.0
 mouse_filter = 2
 __meta__ = {
@@ -234,9 +301,19 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hate = SubResource( 7 )
 anims/love = SubResource( 8 )
+anims/new_shopper = SubResource( 11 )
+
+[node name="Shopper_anim" type="AnimationPlayer" parent="."]
+anims/new_shopper = SubResource( 11 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 804.822, 562.222 )
+
+[node name="Item_Failure_Goo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 505.964, 281.704 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
