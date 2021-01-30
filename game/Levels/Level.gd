@@ -24,7 +24,8 @@ func _on_Trash_button_pressed():
 	selected.clear()
 	$Trash_button.hide()
 	$Okay_button.hide()
+	Global.set_types()
 
 func _on_Okay_button_pressed():
 	print(selected)
-	
+	Global.set_types

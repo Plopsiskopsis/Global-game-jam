@@ -4,9 +4,4 @@ OpenGL ES Batching: ON
 **WARNING**: WASAPI: Unsupported number of channels: 1
    At: drivers/wasapi/audio_driver_wasapi.cpp:330:init_render_device() - WASAPI: Unsupported number of channels: 1
  
-Flower
-Dragon Scale
-Ash
-Berries
-Jelly
-Feather
+[Amber, Ash, Bat Wing, Berries, Dragon Scale, Feather, Flower, Jelly, Mushroom]
