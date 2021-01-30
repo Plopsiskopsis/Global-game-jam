@@ -18,3 +18,8 @@ config/icon="res://Objects/Graphics/Ingredient_Berries.png"
 
 MusicPlayer="*res://Musicplayer/MusicPlayer.tscn"
 Global="*res://Global/Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
