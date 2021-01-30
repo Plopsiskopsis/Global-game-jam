@@ -38,7 +38,6 @@ func _on_Okay_button_pressed() -> void:
 	for y in selected:
 		print(y.type)
 	for j in needed_types:
-		var incorrect :int = 0
 		for i in selected:
 			if i.type == j:
 				correct += 1
