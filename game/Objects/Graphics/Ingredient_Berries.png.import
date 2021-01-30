@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background_Tile.png-c65a05e44006d55b55070f7cddb6612f.stex"
+path="res://.import/Ingredient_Berries.png-7c3d32abae425d660c70030761d50d87.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Background_Tile.png"
-dest_files=[ "res://.import/Background_Tile.png-c65a05e44006d55b55070f7cddb6612f.stex" ]
+source_file="res://Objects/Graphics/Ingredient_Berries.png"
+dest_files=[ "res://.import/Ingredient_Berries.png-7c3d32abae425d660c70030761d50d87.stex" ]
 
 [params]
 

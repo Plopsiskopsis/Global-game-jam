@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/temp_dude.PNG" type="Texture" id=2]
-[ext_resource path="res://Levels/Background_Door.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Graphics/Background_Door.png" type="Texture" id=3]
 [ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Objects/Tappable_object.tscn" type="PackedScene" id=6]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
 [ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
 [ext_resource path="res://Objects/temp_trash.PNG" type="Texture" id=13]
-[ext_resource path="res://Levels/Background_Tile.png" type="Texture" id=14]
+[ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hate"
@@ -242,7 +242,6 @@ margin_bottom = 450.563
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hate = SubResource( 1 )
 anims/love = SubResource( 2 )
-
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
