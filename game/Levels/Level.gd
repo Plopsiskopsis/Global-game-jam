@@ -55,8 +55,8 @@ func _on_Okay_button_pressed() -> void:
 	selection_available = true
 
 func trash_hand() -> void:
-	for i in $Tappables.get_child_count():
-		$Tappables.get_child(i).trash()
+	for i in get_tree().get_nodes_in_group("TAPPABLE"):
+		i.trash()
 	selected.clear()
 	$Trash_button.hide()
 	$Okay_button.hide()

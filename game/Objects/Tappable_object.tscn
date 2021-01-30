@@ -132,7 +132,9 @@ orbit_velocity_random = 0.0
 scale = 8.0
 color_ramp = SubResource( 5 )
 
-[node name="Tappable_object" type="TextureButton"]
+[node name="Tappable_object" type="TextureButton" groups=[
+"TAPPABLE",
+]]
 margin_right = 40.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 2 )
