@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/temp_dude.PNG" type="Texture" id=2]
@@ -18,11 +18,28 @@
 [ext_resource path="res://Levels/Graphics/Background_Door.png" type="Texture" id=16]
 [ext_resource path="res://Objects/temp_angry_face.PNG" type="Texture" id=17]
 
-<<<<<<< HEAD
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 15 )
+
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 15 )
-=======
-[sub_resource type="Shader" id=13]
+
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 void fragment()
@@ -37,52 +54,13 @@ void fragment()
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = SubResource( 13 )
-
-[sub_resource type="Gradient" id=14]
-colors = PoolColorArray( 0.0340939, 0.698242, 0, 1, 1, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=15]
-gradient = SubResource( 14 )
-
-[sub_resource type="ParticlesMaterial" id=16]
-emission_shape = 2
-emission_box_extents = Vector3( 150, 70, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
-gravity = Vector3( 0, -98, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 1.5
-color_ramp = SubResource( 15 )
->>>>>>> 7f5d9cdc8221459c94156aed9769ce36d9be596d
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 15 )
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 15 )
-
 [sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 15 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
 tracks/0/interp = 1
@@ -120,7 +98,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -146,7 +124,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -231,19 +209,18 @@ texture = ExtResource( 16 )
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.000244141
-margin_bottom = -300.0
+margin_bottom = -241.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Temp_dude" type="TextureRect" parent="Top_center"]
-material = SubResource( 7 )
+material = SubResource( 1 )
 margin_left = 198.0
-margin_top = 280.0
+margin_top = 309.0
 margin_right = 313.0
-margin_bottom = 444.0
+margin_bottom = 473.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -251,7 +228,7 @@ __meta__ = {
 
 [node name="Happy_face" type="Sprite" parent="Top_center/Temp_dude"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 2 )
 position = Vector2( 2.47597, 6.32451 )
 scale = Vector2( 1.32646, 1.28301 )
 texture = ExtResource( 14 )
@@ -259,37 +236,28 @@ centered = false
 
 [node name="Angry_face" type="Sprite" parent="Top_center/Temp_dude"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 2 )
 position = Vector2( 10.422, 4.20558 )
 scale = Vector2( 1.28284, 1.28301 )
 texture = ExtResource( 17 )
 centered = false
 
 [node name="temp_love" type="Sprite" parent="Top_center"]
-visible = false
 material = SubResource( 3 )
-position = Vector2( 256, 40.224 )
+position = Vector2( 306.371, 296.156 )
 texture = ExtResource( 10 )
 
 [node name="temp_hate" type="Sprite" parent="Top_center"]
-visible = false
 material = SubResource( 4 )
-position = Vector2( 256, 38.726 )
+position = Vector2( 190.873, 281.302 )
 texture = ExtResource( 11 )
 
-[node name="Particles2D" type="Particles2D" parent="temp_cauldron"]
-position = Vector2( 0, -15 )
-amount = 512
-process_material = SubResource( 16 )
-
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 387.109, 165.406 )
+position = Vector2( 164.355, 411.757 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
-visible = false
-material = SubResource( 2 )
-position = Vector2( 257.587, 132.485 )
+material = SubResource( 5 )
+position = Vector2( 395.393, 293.888 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="temp_speech_bubble"]
@@ -307,24 +275,22 @@ __meta__ = {
 }
 
 [node name="Trash_button" type="TextureButton" parent="."]
-visible = false
-material = SubResource( 5 )
-margin_left = 250.0
-margin_top = 250.0
-margin_right = 331.0
-margin_bottom = 337.0
+material = SubResource( 6 )
+margin_left = 16.264
+margin_top = 516.699
+margin_right = 97.264
+margin_bottom = 603.699
 texture_normal = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Okay_button" type="TextureButton" parent="."]
-visible = false
-material = SubResource( 6 )
-margin_left = 690.0
-margin_top = 250.0
-margin_right = 797.0
-margin_bottom = 353.0
+material = SubResource( 7 )
+margin_left = 360.372
+margin_top = 515.2
+margin_right = 467.372
+margin_bottom = 618.2
 texture_normal = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -333,10 +299,10 @@ __meta__ = {
 [node name="Ingredients_Container" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 483.0
-margin_right = 2.0
-margin_bottom = -176.0
+margin_left = -3.99323
+margin_top = 488.993
+margin_right = -3.99323
+margin_bottom = -170.007
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -355,12 +321,12 @@ __meta__ = {
 }
 
 [node name="temp_cauldron" type="Sprite" parent="Cauldron_Container"]
-material = SubResource( 1 )
+material = SubResource( 9 )
 position = Vector2( 254.413, 200 )
 texture = ExtResource( 8 )
 
 [node name="MenuButton" type="TextureButton" parent="."]
-material = SubResource( 9 )
+material = SubResource( 10 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 4 )
@@ -385,11 +351,11 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 10 )
-anims/love = SubResource( 11 )
+anims/hate = SubResource( 11 )
+anims/love = SubResource( 12 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/new_shopper = SubResource( 12 )
+anims/new_shopper = SubResource( 13 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 256, 562.222 )
@@ -399,6 +365,7 @@ visible = false
 position = Vector2( 256, 281.704 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
+
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
