@@ -2,12 +2,14 @@ extends TextureButton
 
 onready var anim = $AnimationPlayer
 var type :String
+var selectable :bool = true
 
 func _ready() -> void:
 	select_type()
 
 func _on_Tappable_object_pressed() -> void:
-	if Global.level.selection_available:
+	if Global.level.selection_available && selectable:
+		selectable = false
 		anim.play("tapped")
 		Global.level.tapped(self)
 
@@ -39,5 +41,5 @@ func select_type() -> void:
 		"Mushroom":
 			texture_normal = load("res://Objects/Graphics/Ingredient_Mushroom.png")
 	Global.ingredient_types.remove(ind)
-	modulate = Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0), 1.0)
+	#modulate = Color(rand_range(0.0, 1.0), rand_range(0.0, 1.0), rand_range(0.0, 1.0), 1.0)
 
