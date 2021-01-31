@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Objects/Graphics/NPC_2_Default.png" type="Texture" id=20]
 [ext_resource path="res://Objects/Graphics/NPC_2_Happy.png" type="Texture" id=21]
 [ext_resource path="res://Objects/Graphics/NPC_2_Unhappy.png" type="Texture" id=22]
+[ext_resource path="res://Levels/Graphics/Background_Shelf.png" type="Texture" id=23]
+[ext_resource path="res://Levels/Graphics/Background_Countertop.png" type="Texture" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -121,7 +123,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 17 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 resource_name = "hate2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
@@ -160,8 +162,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 22 ), ExtResource( 20 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "love1"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -187,7 +188,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 18 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 resource_name = "love2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
@@ -214,7 +215,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 21 ), ExtResource( 20 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 resource_name = "enter_shopper1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -265,7 +266,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=18]
 resource_name = "enter_shopper2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -316,8 +317,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "new_shopper1"
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
 tracks/0/interp = 1
@@ -460,8 +460,9 @@ __meta__ = {
 }
 
 [node name="BackgroundContainer" type="CenterContainer" parent="."]
+anchor_top = -0.000651777
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.999348
 margin_left = 2.0
 margin_top = -2.0
 margin_right = 2.0
@@ -494,52 +495,125 @@ texture = ExtResource( 8 )
 amount = 512
 process_material = SubResource( 5 )
 
+[node name="Shelves" type="GridContainer" parent="."]
+anchor_top = 0.527
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 41.352
+margin_right = -38.0
+margin_bottom = -173.0
+rect_min_size = Vector2( 32, 32 )
+custom_constants/vseparation = 75
+custom_constants/hseparation = 25
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shelf_1" type="TextureRect" parent="Shelves"]
+margin_right = 128.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_2" type="TextureRect" parent="Shelves"]
+margin_left = 153.0
+margin_right = 281.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_3" type="TextureRect" parent="Shelves"]
+margin_left = 306.0
+margin_right = 434.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_4" type="TextureRect" parent="Shelves"]
+margin_top = 113.0
+margin_right = 128.0
+margin_bottom = 151.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_5" type="TextureRect" parent="Shelves"]
+margin_left = 153.0
+margin_top = 113.0
+margin_right = 281.0
+margin_bottom = 151.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_6" type="TextureRect" parent="Shelves"]
+margin_left = 306.0
+margin_top = 113.0
+margin_right = 434.0
+margin_bottom = 151.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_7" type="TextureRect" parent="Shelves"]
+margin_top = 226.0
+margin_right = 128.0
+margin_bottom = 264.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_8" type="TextureRect" parent="Shelves"]
+margin_left = 153.0
+margin_top = 226.0
+margin_right = 281.0
+margin_bottom = 264.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_9" type="TextureRect" parent="Shelves"]
+margin_left = 306.0
+margin_top = 226.0
+margin_right = 434.0
+margin_bottom = 264.0
+texture = ExtResource( 23 )
+
 [node name="Tappables" type="Node" parent="."]
 
 [node name="Position2D" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 70.6353, 556.673 )
+position = Vector2( 71.9799, 537.555 )
 
 [node name="Position2D2" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 195.088, 571.81 )
+position = Vector2( 225.979, 544.616 )
 
 [node name="Position2D3" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 304.405, 570.128 )
+position = Vector2( 381.233, 546.939 )
 
 [node name="Position2D4" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 410.357, 583.582 )
+position = Vector2( 72.4887, 657.721 )
 
 [node name="Position2D5" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 72.3171, 687.853 )
+position = Vector2( 227.881, 658.704 )
 
 [node name="Position2D6" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 196.77, 696.262 )
+position = Vector2( 379.537, 653.326 )
 
 [node name="Position2D7" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 316.177, 682.808 )
+position = Vector2( 72.4149, 767.902 )
 
 [node name="Position2D8" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 433.903, 713.08 )
+position = Vector2( 225.791, 769.637 )
 
 [node name="Position2D9" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 258.996, 763.534 )
+position = Vector2( 378.587, 768.538 )
 
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -579,6 +653,28 @@ material = SubResource( 8 )
 position = Vector2( 125.401, 176.077 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
+
+[node name="Counter_Top" type="CenterContainer" parent="."]
+anchor_top = 0.441
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 5.0
+margin_bottom = -955.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Counter_Top"]
+margin_right = 551.0
+margin_bottom = 64.0
+texture = ExtResource( 24 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
 position = Vector2( 137.532, 339.374 )
@@ -627,6 +723,7 @@ __meta__ = {
 }
 
 [node name="Ingredients_Container" type="CenterContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 483.0
@@ -646,6 +743,7 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="."]
+visible = false
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 502.0
@@ -661,14 +759,14 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hate1 = SubResource( 13 )
-anims/hate2 = SubResource( 16 )
-anims/love1 = SubResource( 14 )
-anims/love2 = SubResource( 17 )
+anims/hate2 = SubResource( 14 )
+anims/love1 = SubResource( 15 )
+anims/love2 = SubResource( 16 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/enter_shopper1 = SubResource( 18 )
-anims/enter_shopper2 = SubResource( 19 )
-anims/new_shopper1 = SubResource( 15 )
+anims/enter_shopper1 = SubResource( 17 )
+anims/enter_shopper2 = SubResource( 18 )
+anims/new_shopper1 = SubResource( 19 )
 anims/new_shopper2 = SubResource( 20 )
 
 [node name="Position2D" type="Position2D" parent="."]
@@ -690,7 +788,6 @@ text = "Time XX"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
