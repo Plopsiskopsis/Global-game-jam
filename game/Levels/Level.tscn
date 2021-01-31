@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Levels/Graphics/Background_Countertop.png" type="Texture" id=24]
 [ext_resource path="res://Levels/Graphics/Foreground_Table.png" type="Texture" id=25]
 [ext_resource path="res://Levels/Graphics/Foreground_Table_Tablet.png" type="Texture" id=26]
+[ext_resource path="res://Levels/Graphics/Particle_1.png" type="Texture" id=27]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -45,26 +46,50 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.414815, 0.755556, 1 )
-colors = PoolColorArray( 1, 0.469028, 0.0273438, 1, 0.67041, 0.0785637, 0.0785637, 1, 0, 0.153959, 0.900879, 1, 1, 1, 1, 1 )
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.142857, 0.435374, 0.789116, 1 )
+colors = PoolColorArray( 0.0352941, 0.0156863, 0.0745098, 0, 0.369514, 0.15979, 0.464844, 1, 0.234375, 0.766724, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="Curve" id=18]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0.405063, -16.7188 ), 0.0, 0.0, 0, 0, Vector2( 1, 132.372 ), 219.679, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="Curve" id=20]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.292929, 0.490909 ), 0.0, 0.0, 0, 0, Vector2( 0.515152, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.732323, 0.6 ), 4.02, 4.02, 0, 0, Vector2( 1, 0.0818181 ), -3.81176, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=21]
+curve = SubResource( 20 )
 
 [sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.3
 emission_shape = 2
 emission_box_extents = Vector3( 150, 50, 1 )
 flag_disable_z = true
-gravity = Vector3( 0, -98, 0 )
-angular_velocity = 0.1
-angular_velocity_random = 0.24
-orbit_velocity = 0.05
-orbit_velocity_random = 0.7
-linear_accel = 1.0
-radial_accel = 1.0
-scale = 1.5
-color_ramp = SubResource( 4 )
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+gravity = Vector3( 0, -28, 0 )
+initial_velocity = 3.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 35.48
+linear_accel_random = 1.0
+radial_accel_random = 0.1
+radial_accel_curve = SubResource( 19 )
+damping_random = 0.02
+scale = 0.1
+scale_random = 0.48
+scale_curve = SubResource( 21 )
+color_ramp = SubResource( 17 )
+hue_variation = 0.04
+hue_variation_random = 1.0
 
 [sub_resource type="ShaderMaterial" id=6]
 
@@ -381,8 +406,12 @@ position = Vector2( 254.413, 200 )
 texture = ExtResource( 8 )
 
 [node name="Particles2D" type="Particles2D" parent="Alchemy_Workspace_Container/temp_cauldron"]
-amount = 512
+amount = 128
+lifetime = 1.5
+randomness = 0.68
+visibility_rect = Rect2( -101.18, -100, 200, 200 )
 process_material = SubResource( 5 )
+texture = ExtResource( 27 )
 
 [node name="Tappables" type="Node" parent="."]
 
