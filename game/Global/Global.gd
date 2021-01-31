@@ -4,6 +4,7 @@ var level :Object
 
 var ingredient_types :Array = []
 var selected_types :Array = []
+var score :int = 0
 
 var requestable_items :Array = ["Black powder", "Fire feather", "Flower potion",
  "Jelly potion", "Purple pendant"]

@@ -1,13 +1,13 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=3]
-[ext_resource path="res://Menu/Button_Menu.png" type="Texture" id=4]
+[ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Objects/Graphics/Item_Failure_Goo.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Objects/temp_cauldron.PNG" type="Texture" id=8]
+[ext_resource path="res://Objects/Graphics/Alchemy_Circle.png" type="Texture" id=8]
 [ext_resource path="res://Objects/temp_speech_bubble.PNG" type="Texture" id=9]
 [ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
@@ -19,14 +19,9 @@
 [ext_resource path="res://Objects/Graphics/NPC_1_Unhappy.png" type="Texture" id=17]
 [ext_resource path="res://Objects/Graphics/NPC_1_Happy.png" type="Texture" id=18]
 [ext_resource path="res://shaders/clear3.shader" type="Shader" id=19]
-[ext_resource path="res://Objects/Graphics/Speech_Bubble_Right.png" type="Texture" id=20]
-[ext_resource path="res://Objects/Graphics/Speech_Bubble_Left.png" type="Texture" id=21]
-[ext_resource path="res://Levels/Graphics/Background_Shelf_Vertical_Beam.png" type="Texture" id=22]
-[ext_resource path="res://Levels/Graphics/Background_Shelf.png" type="Texture" id=23]
-[ext_resource path="res://Levels/Graphics/Background_Countertop.png" type="Texture" id=24]
-[ext_resource path="res://Levels/Graphics/Foreground_Table.png" type="Texture" id=25]
-[ext_resource path="res://Levels/Graphics/Foreground_Table_Tablet.png" type="Texture" id=26]
-[ext_resource path="res://Levels/Graphics/Particle_1.png" type="Texture" id=27]
+[ext_resource path="res://Objects/Graphics/NPC_2_Default.png" type="Texture" id=20]
+[ext_resource path="res://Objects/Graphics/NPC_2_Happy.png" type="Texture" id=21]
+[ext_resource path="res://Objects/Graphics/NPC_2_Unhappy.png" type="Texture" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -34,7 +29,7 @@ code = "shader_type canvas_item;
 void fragment()
 {
 	COLOR = texture(TEXTURE, UV);
-	if (COLOR.r >= 0.075)
+	if (COLOR.r <= 0.075)
 	{
 		COLOR = vec4(0.0);
 	} else 
@@ -46,50 +41,26 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
-[sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.142857, 0.435374, 0.789116, 1 )
-colors = PoolColorArray( 0.0352941, 0.0156863, 0.0745098, 0, 0.369514, 0.15979, 0.464844, 1, 0.234375, 0.766724, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.414815, 0.755556, 1 )
+colors = PoolColorArray( 1, 0.469028, 0.0273438, 1, 0.67041, 0.0785637, 0.0785637, 1, 0, 0.153959, 0.900879, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
-
-[sub_resource type="Curve" id=18]
-min_value = -200.0
-max_value = 200.0
-_data = [ Vector2( 0.405063, -16.7188 ), 0.0, 0.0, 0, 0, Vector2( 1, 132.372 ), 219.679, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=19]
-curve = SubResource( 18 )
-
-[sub_resource type="Curve" id=20]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.292929, 0.490909 ), 0.0, 0.0, 0, 0, Vector2( 0.515152, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.732323, 0.6 ), 4.02, 4.02, 0, 0, Vector2( 1, 0.0818181 ), -3.81176, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=21]
-curve = SubResource( 20 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
-lifetime_randomness = 0.3
 emission_shape = 2
-emission_box_extents = Vector3( 150, 50, 1 )
+emission_box_extents = Vector3( 120, 60, 1 )
 flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 0.0
-gravity = Vector3( 0, -28, 0 )
-initial_velocity = 3.0
-initial_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 35.48
-linear_accel_random = 1.0
-radial_accel_random = 0.1
-radial_accel_curve = SubResource( 19 )
-damping_random = 0.02
-scale = 0.1
-scale_random = 0.48
-scale_curve = SubResource( 21 )
-color_ramp = SubResource( 17 )
-hue_variation = 0.04
-hue_variation_random = 1.0
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 0.1
+angular_velocity_random = 0.24
+orbit_velocity = 0.05
+orbit_velocity_random = 0.7
+linear_accel = 1.0
+radial_accel = 1.0
+scale = 1.5
+color_ramp = SubResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=6]
 
@@ -112,6 +83,7 @@ shader = ExtResource( 14 )
 shader = ExtResource( 15 )
 
 [sub_resource type="Animation" id=13]
+resource_name = "hate1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
 tracks/0/interp = 1
@@ -149,7 +121,47 @@ tracks/2/keys = {
 "values": [ ExtResource( 17 ), ExtResource( 2 ) ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "hate2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center/temp_hate:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Item_Failure_Goo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Top_center/NPC:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ), ExtResource( 20 ) ]
+}
+
 [sub_resource type="Animation" id=14]
+resource_name = "love1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -175,8 +187,202 @@ tracks/1/keys = {
 "values": [ ExtResource( 18 ), ExtResource( 2 ) ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "love2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center/temp_love:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center/NPC:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 28.84, 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ), ExtResource( 20 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "enter_shopper1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -37.2658, 193.288 ), Vector2( 127.961, 151.532 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "enter_shopper2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 276.126, 182.961 ), Vector2( 127.961, 151.532 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=15]
-length = 2.0
+resource_name = "new_shopper1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 127.961, 151.532 ), Vector2( 276.126, 182.961 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "select_shopper"
+} ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "new_shopper2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
 tracks/0/interp = 1
@@ -187,7 +393,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 127.961, 151.532 ), Vector2( 276.126, 182.961 ), Vector2( -37.2658, 193.288 ), Vector2( 127.961, 151.532 ) ]
+"values": [ Vector2( 127.961, 151.532 ), Vector2( -37.2658, 193.288 ), Vector2( 276.126, 182.961 ), Vector2( 127.961, 151.532 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Top_center:modulate")
@@ -225,6 +431,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "select_shopper"
+} ]
+}
 
 [node name="Level" type="Node"]
 script = ExtResource( 1 )
@@ -253,146 +473,11 @@ __meta__ = {
 }
 
 [node name="Background_Door" type="Sprite" parent="BackgroundContainer"]
-position = Vector2( 252.999, 263.976 )
+position = Vector2( 254.413, 263.269 )
 scale = Vector2( 0.862041, 0.862041 )
 texture = ExtResource( 16 )
 
-[node name="Shelf_Container" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 521.0
-margin_bottom = -135.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="Shelf_Container"]
-margin_left = 44.0
-margin_top = 63.0
-margin_right = 468.0
-margin_bottom = 305.0
-custom_constants/vseparation = 64
-custom_constants/hseparation = 20
-columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Shelf_1" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_right = 128.0
-margin_bottom = 38.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_2" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 148.0
-margin_right = 276.0
-margin_bottom = 38.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_3" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 296.0
-margin_right = 424.0
-margin_bottom = 38.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_4" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_top = 102.0
-margin_right = 128.0
-margin_bottom = 140.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_5" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 148.0
-margin_top = 102.0
-margin_right = 276.0
-margin_bottom = 140.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_6" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 296.0
-margin_top = 102.0
-margin_right = 424.0
-margin_bottom = 140.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_7" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_top = 204.0
-margin_right = 128.0
-margin_bottom = 242.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_8" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 148.0
-margin_top = 204.0
-margin_right = 276.0
-margin_bottom = 242.0
-texture = ExtResource( 23 )
-
-[node name="Shelf_9" type="TextureRect" parent="Shelf_Container/GridContainer"]
-margin_left = 296.0
-margin_top = 204.0
-margin_right = 424.0
-margin_bottom = 242.0
-texture = ExtResource( 23 )
-
-[node name="GridContainer2" type="GridContainer" parent="Shelf_Container"]
-margin_top = 184.0
-margin_right = 512.0
-margin_bottom = 184.0
-custom_constants/hseparation = 64
-columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Vertical_Beam_1" type="Sprite" parent="Shelf_Container/GridContainer2"]
-scale = Vector2( 0.836822, 0.836822 )
-z_as_relative = false
-texture = ExtResource( 22 )
-
-[node name="Vertical_Beam_2" type="Sprite" parent="Shelf_Container/GridContainer2"]
-scale = Vector2( 0.836822, 0.836822 )
-z_as_relative = false
-texture = ExtResource( 22 )
-
-[node name="Vertical_Beam_3" type="Sprite" parent="Shelf_Container/GridContainer2"]
-scale = Vector2( 0.836822, 0.836822 )
-z_as_relative = false
-texture = ExtResource( 22 )
-
-[node name="Vertical_Beam_4" type="Sprite" parent="Shelf_Container/GridContainer2"]
-scale = Vector2( 0.836822, 0.836822 )
-z_as_relative = false
-texture = ExtResource( 22 )
-
-[node name="Alchemy_Table" type="TextureRect" parent="."]
-anchor_left = 0.00164241
-anchor_right = 0.00164247
-margin_left = -0.840912
-margin_top = 878.0
-margin_right = 511.159
-margin_bottom = 1067.0
-texture = ExtResource( 25 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="Alchemy_Table"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Alchemy_Table_Tablet" type="Sprite" parent="Alchemy_Table/CenterContainer"]
-position = Vector2( 256, 47.1937 )
-scale = Vector2( 0.82603, 0.832731 )
-texture = ExtResource( 26 )
-
-[node name="Alchemy_Workspace_Container" type="CenterContainer" parent="."]
+[node name="Cauldron_Container" type="CenterContainer" parent="."]
 margin_top = 719.0
 margin_bottom = 719.0
 mouse_filter = 2
@@ -400,65 +485,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="temp_cauldron" type="Sprite" parent="Alchemy_Workspace_Container"]
+[node name="temp_cauldron" type="Sprite" parent="Cauldron_Container"]
 material = SubResource( 2 )
 position = Vector2( 254.413, 200 )
 texture = ExtResource( 8 )
 
-[node name="Particles2D" type="Particles2D" parent="Alchemy_Workspace_Container/temp_cauldron"]
-amount = 128
-lifetime = 1.5
-randomness = 0.68
-visibility_rect = Rect2( -101.18, -100, 200, 200 )
+[node name="Particles2D" type="Particles2D" parent="Cauldron_Container/temp_cauldron"]
+amount = 512
 process_material = SubResource( 5 )
-texture = ExtResource( 27 )
 
 [node name="Tappables" type="Node" parent="."]
 
 [node name="Position2D" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 101.783, 578.854 )
+position = Vector2( 70.6353, 556.673 )
 
 [node name="Position2D2" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 250.305, 579.833 )
+position = Vector2( 195.088, 571.81 )
 
 [node name="Position2D3" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 401.624, 577.207 )
+position = Vector2( 304.405, 570.128 )
 
 [node name="Position2D4" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 104.07, 682.217 )
+position = Vector2( 410.357, 583.582 )
 
 [node name="Position2D5" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 253.541, 682.19 )
+position = Vector2( 72.3171, 687.853 )
 
 [node name="Position2D6" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 401.591, 681.16 )
+position = Vector2( 196.77, 696.262 )
 
 [node name="Position2D7" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 106.165, 781.443 )
+position = Vector2( 316.177, 682.808 )
 
 [node name="Position2D8" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 255.039, 779.151 )
+position = Vector2( 433.903, 713.08 )
 
 [node name="Position2D9" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 402.465, 779.108 )
+position = Vector2( 258.996, 763.534 )
 
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -485,6 +566,7 @@ __meta__ = {
 
 [node name="temp_love" type="Sprite" parent="Top_center"]
 visible = false
+modulate = Color( 1, 0, 0, 1 )
 material = SubResource( 7 )
 position = Vector2( 290.288, 200.867 )
 scale = Vector2( 2, 2 )
@@ -492,70 +574,30 @@ texture = ExtResource( 10 )
 
 [node name="temp_hate" type="Sprite" parent="Top_center"]
 visible = false
+modulate = Color( 0, 0.0156863, 1, 1 )
 material = SubResource( 8 )
 position = Vector2( 125.401, 176.077 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
-[node name="Speech_Bubble_Left" type="NinePatchRect" parent="."]
-margin_left = 111.445
-margin_top = 317.455
-margin_right = 199.445
-margin_bottom = 405.455
-texture = ExtResource( 21 )
-patch_margin_left = 20
-patch_margin_top = 17
-patch_margin_right = 68
-patch_margin_bottom = 43
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
-position = Vector2( 155.013, 356.325 )
-
-[node name="Speech_Bubble_Right" type="NinePatchRect" parent="."]
-margin_left = 308.993
-margin_top = 186.627
-margin_right = 449.993
-margin_bottom = 347.627
-texture = ExtResource( 20 )
-patch_margin_left = 93
-patch_margin_top = 24
-patch_margin_right = 28
-patch_margin_bottom = 52
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 137.532, 339.374 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
 material = SubResource( 9 )
-position = Vector2( 386.28, 306.433 )
+position = Vector2( 358.734, 258.757 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="temp_speech_bubble"]
-margin_left = -67.2868
-margin_top = -114.806
-margin_right = 56.7132
-margin_bottom = 20.1938
+margin_left = -58.007
+margin_top = -82.4881
+margin_right = 68.993
+margin_bottom = 46.5119
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "Label to cover the speech bubble"
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Counter_Top" type="TextureRect" parent="."]
-anchor_left = 0.00164241
-anchor_right = 0.00164247
-margin_top = 465.0
-margin_right = 512.0
-margin_bottom = 531.0
-texture = ExtResource( 24 )
-expand = true
-stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -584,6 +626,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Ingredients_Container" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 483.0
+margin_bottom = -176.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MenuButton" type="TextureButton" parent="."]
 material = SubResource( 12 )
 margin_right = 40.0
@@ -599,7 +651,7 @@ margin_top = 10.0
 margin_right = 502.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 5 )
-text = "Score 00000"
+text = "Score 00"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -608,20 +660,37 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 13 )
-anims/love = SubResource( 14 )
+anims/hate1 = SubResource( 13 )
+anims/hate2 = SubResource( 16 )
+anims/love1 = SubResource( 14 )
+anims/love2 = SubResource( 17 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/new_shopper = SubResource( 15 )
+anims/enter_shopper1 = SubResource( 18 )
+anims/enter_shopper2 = SubResource( 19 )
+anims/new_shopper1 = SubResource( 15 )
+anims/new_shopper2 = SubResource( 20 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 246.1, 905.876 )
+position = Vector2( 253.227, 952.203 )
 
 [node name="Item_Failure_Goo" type="Sprite" parent="."]
 visible = false
 position = Vector2( 247.676, 895.335 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
+
+[node name="Time_label" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 10.0
+margin_right = 301.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 5 )
+text = "Time XX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
