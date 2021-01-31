@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Objects/Graphics/NPC_2_Unhappy.png" type="Texture" id=22]
 [ext_resource path="res://Levels/Graphics/Background_Shelf.png" type="Texture" id=23]
 [ext_resource path="res://Levels/Graphics/Background_Countertop.png" type="Texture" id=24]
+[ext_resource path="res://Objects/Graphics/Speech_Bubble_Left.png" type="Texture" id=25]
+[ext_resource path="res://Objects/Graphics/Speech_Bubble_Right.png" type="Texture" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -672,6 +674,34 @@ margin_right = 551.0
 margin_bottom = 64.0
 texture = ExtResource( 24 )
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speech_Bubble_Left" type="NinePatchRect" parent="."]
+margin_left = 88.7242
+margin_top = 299.208
+margin_right = 188.724
+margin_bottom = 394.208
+texture = ExtResource( 25 )
+patch_margin_left = 27
+patch_margin_top = 23
+patch_margin_right = 73
+patch_margin_bottom = 39
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speech_Bubble_Right" type="NinePatchRect" parent="."]
+margin_left = 283.561
+margin_top = 164.005
+margin_right = 427.561
+margin_bottom = 340.005
+texture = ExtResource( 26 )
+patch_margin_left = 90
+patch_margin_top = 23
+patch_margin_right = 30
+patch_margin_bottom = 55
 __meta__ = {
 "_edit_use_anchors_": false
 }
