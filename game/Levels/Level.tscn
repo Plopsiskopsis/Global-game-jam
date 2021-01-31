@@ -3,7 +3,7 @@
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=3]
-[ext_resource path="res://Objects/temp_menu_button.PNG" type="Texture" id=4]
+[ext_resource path="res://Menu/Button_Menu.png" type="Texture" id=4]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Objects/Graphics/Item_Failure_Goo.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
@@ -359,11 +359,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Speech_Bubble_Right"]
-margin_left = 10.0
-margin_top = 5.0
-margin_right = 134.0
-margin_bottom = 140.0
+[node name="temp_speech_bubble" type="Sprite" parent="."]
+material = SubResource( 9 )
+position = Vector2( 386.28, 306.433 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="temp_speech_bubble"]
+margin_left = -67.2868
+margin_top = -114.806
+margin_right = 56.7132
+margin_bottom = 20.1938
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -372,12 +377,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="temp_speech_bubble" type="Sprite" parent="."]
-visible = false
-material = SubResource( 9 )
-position = Vector2( 386.28, 306.433 )
-texture = ExtResource( 9 )
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
