@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Objects/Graphics/NPC_1_Unhappy.png" type="Texture" id=17]
 [ext_resource path="res://Objects/Graphics/NPC_1_Happy.png" type="Texture" id=18]
 [ext_resource path="res://shaders/clear3.shader" type="Shader" id=19]
+[ext_resource path="res://Objects/Graphics/Speech_Bubble_Right.png" type="Texture" id=20]
+[ext_resource path="res://Objects/Graphics/Speech_Bubble_Left.png" type="Texture" id=21]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -221,7 +223,7 @@ __meta__ = {
 }
 
 [node name="Background_Door" type="Sprite" parent="BackgroundContainer"]
-position = Vector2( 254.413, 263.269 )
+position = Vector2( 252.999, 263.976 )
 scale = Vector2( 0.862041, 0.862041 )
 texture = ExtResource( 16 )
 
@@ -326,19 +328,42 @@ position = Vector2( 125.401, 176.077 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
+[node name="Speech_Bubble_Left" type="NinePatchRect" parent="."]
+margin_left = 111.445
+margin_top = 317.455
+margin_right = 199.445
+margin_bottom = 405.455
+texture = ExtResource( 21 )
+patch_margin_left = 20
+patch_margin_top = 17
+patch_margin_right = 68
+patch_margin_bottom = 43
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
-position = Vector2( 165.078, 356.325 )
+position = Vector2( 155.013, 356.325 )
 
-[node name="temp_speech_bubble" type="Sprite" parent="."]
-material = SubResource( 9 )
-position = Vector2( 386.28, 306.433 )
-texture = ExtResource( 9 )
+[node name="Speech_Bubble_Right" type="NinePatchRect" parent="."]
+margin_left = 308.993
+margin_top = 186.627
+margin_right = 449.993
+margin_bottom = 347.627
+texture = ExtResource( 20 )
+patch_margin_left = 93
+patch_margin_top = 24
+patch_margin_right = 28
+patch_margin_bottom = 52
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="temp_speech_bubble"]
-margin_left = -58.007
-margin_top = -82.4881
-margin_right = 68.993
-margin_bottom = 46.5119
+[node name="Label" type="Label" parent="Speech_Bubble_Right"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 134.0
+margin_bottom = 140.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -347,6 +372,12 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="temp_speech_bubble" type="Sprite" parent="."]
+visible = false
+material = SubResource( 9 )
+position = Vector2( 386.28, 306.433 )
+texture = ExtResource( 9 )
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
@@ -420,7 +451,6 @@ visible = false
 position = Vector2( 247.676, 895.335 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
-
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
