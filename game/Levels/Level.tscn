@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -21,6 +21,11 @@
 [ext_resource path="res://shaders/clear3.shader" type="Shader" id=19]
 [ext_resource path="res://Objects/Graphics/Speech_Bubble_Right.png" type="Texture" id=20]
 [ext_resource path="res://Objects/Graphics/Speech_Bubble_Left.png" type="Texture" id=21]
+[ext_resource path="res://Levels/Graphics/Background_Shelf_Vertical_Beam.png" type="Texture" id=22]
+[ext_resource path="res://Levels/Graphics/Background_Shelf.png" type="Texture" id=23]
+[ext_resource path="res://Levels/Graphics/Background_Countertop.png" type="Texture" id=24]
+[ext_resource path="res://Levels/Graphics/Foreground_Table.png" type="Texture" id=25]
+[ext_resource path="res://Levels/Graphics/Foreground_Table_Tablet.png" type="Texture" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -227,7 +232,142 @@ position = Vector2( 252.999, 263.976 )
 scale = Vector2( 0.862041, 0.862041 )
 texture = ExtResource( 16 )
 
-[node name="Cauldron_Container" type="CenterContainer" parent="."]
+[node name="Shelf_Container" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 521.0
+margin_bottom = -135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Shelf_Container"]
+margin_left = 44.0
+margin_top = 63.0
+margin_right = 468.0
+margin_bottom = 305.0
+custom_constants/vseparation = 64
+custom_constants/hseparation = 20
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shelf_1" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_right = 128.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_2" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 148.0
+margin_right = 276.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_3" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 296.0
+margin_right = 424.0
+margin_bottom = 38.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_4" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_top = 102.0
+margin_right = 128.0
+margin_bottom = 140.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_5" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 148.0
+margin_top = 102.0
+margin_right = 276.0
+margin_bottom = 140.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_6" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 296.0
+margin_top = 102.0
+margin_right = 424.0
+margin_bottom = 140.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_7" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_top = 204.0
+margin_right = 128.0
+margin_bottom = 242.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_8" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 148.0
+margin_top = 204.0
+margin_right = 276.0
+margin_bottom = 242.0
+texture = ExtResource( 23 )
+
+[node name="Shelf_9" type="TextureRect" parent="Shelf_Container/GridContainer"]
+margin_left = 296.0
+margin_top = 204.0
+margin_right = 424.0
+margin_bottom = 242.0
+texture = ExtResource( 23 )
+
+[node name="GridContainer2" type="GridContainer" parent="Shelf_Container"]
+margin_top = 184.0
+margin_right = 512.0
+margin_bottom = 184.0
+custom_constants/hseparation = 64
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vertical_Beam_1" type="Sprite" parent="Shelf_Container/GridContainer2"]
+scale = Vector2( 0.836822, 0.836822 )
+z_as_relative = false
+texture = ExtResource( 22 )
+
+[node name="Vertical_Beam_2" type="Sprite" parent="Shelf_Container/GridContainer2"]
+scale = Vector2( 0.836822, 0.836822 )
+z_as_relative = false
+texture = ExtResource( 22 )
+
+[node name="Vertical_Beam_3" type="Sprite" parent="Shelf_Container/GridContainer2"]
+scale = Vector2( 0.836822, 0.836822 )
+z_as_relative = false
+texture = ExtResource( 22 )
+
+[node name="Vertical_Beam_4" type="Sprite" parent="Shelf_Container/GridContainer2"]
+scale = Vector2( 0.836822, 0.836822 )
+z_as_relative = false
+texture = ExtResource( 22 )
+
+[node name="Alchemy_Table" type="TextureRect" parent="."]
+anchor_left = 0.00164241
+anchor_right = 0.00164247
+margin_left = -0.840912
+margin_top = 878.0
+margin_right = 511.159
+margin_bottom = 1067.0
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Alchemy_Table"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Alchemy_Table_Tablet" type="Sprite" parent="Alchemy_Table/CenterContainer"]
+position = Vector2( 256, 47.1937 )
+scale = Vector2( 0.82603, 0.832731 )
+texture = ExtResource( 26 )
+
+[node name="Alchemy_Workspace_Container" type="CenterContainer" parent="."]
 margin_top = 719.0
 margin_bottom = 719.0
 mouse_filter = 2
@@ -235,12 +375,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="temp_cauldron" type="Sprite" parent="Cauldron_Container"]
+[node name="temp_cauldron" type="Sprite" parent="Alchemy_Workspace_Container"]
 material = SubResource( 2 )
 position = Vector2( 254.413, 200 )
 texture = ExtResource( 8 )
 
-[node name="Particles2D" type="Particles2D" parent="Cauldron_Container/temp_cauldron"]
+[node name="Particles2D" type="Particles2D" parent="Alchemy_Workspace_Container/temp_cauldron"]
 amount = 512
 process_material = SubResource( 5 )
 
@@ -249,47 +389,47 @@ process_material = SubResource( 5 )
 [node name="Position2D" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 70.6353, 556.673 )
+position = Vector2( 101.783, 578.854 )
 
 [node name="Position2D2" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 195.088, 571.81 )
+position = Vector2( 250.305, 579.833 )
 
 [node name="Position2D3" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 304.405, 570.128 )
+position = Vector2( 401.624, 577.207 )
 
 [node name="Position2D4" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 410.357, 583.582 )
+position = Vector2( 104.07, 682.217 )
 
 [node name="Position2D5" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 72.3171, 687.853 )
+position = Vector2( 253.541, 682.19 )
 
 [node name="Position2D6" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 196.77, 696.262 )
+position = Vector2( 401.591, 681.16 )
 
 [node name="Position2D7" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 316.177, 682.808 )
+position = Vector2( 106.165, 781.443 )
 
 [node name="Position2D8" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 433.903, 713.08 )
+position = Vector2( 255.039, 779.151 )
 
 [node name="Position2D9" type="Position2D" parent="Tappables" groups=[
 "POS",
 ]]
-position = Vector2( 258.996, 763.534 )
+position = Vector2( 402.465, 779.108 )
 
 [node name="Top_center" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -378,6 +518,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Counter_Top" type="TextureRect" parent="."]
+anchor_left = 0.00164241
+anchor_right = 0.00164247
+margin_top = 465.0
+margin_right = 512.0
+margin_bottom = 531.0
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
 material = SubResource( 10 )
@@ -398,16 +551,6 @@ margin_top = 863.769
 margin_right = 509.915
 margin_bottom = 966.769
 texture_normal = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Ingredients_Container" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 483.0
-margin_bottom = -176.0
-mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
