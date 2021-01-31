@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=1]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=4]
 [ext_resource path="res://Menu/Logo.png" type="Texture" id=5]
 [ext_resource path="res://Menu/Menu_Guide.png" type="Texture" id=6]
+[ext_resource path="res://Menu/UI_Box_1.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -100,20 +101,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="."]
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 256, 88 )
+scale = Vector2( 0.847222, 0.847222 )
+texture = ExtResource( 5 )
+
+[node name="Guide_Box" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -880.0
-texture = ExtResource( 5 )
+margin_left = 64.0
+margin_top = 180.0
+margin_right = -64.0
+margin_bottom = -623.353
+texture = ExtResource( 7 )
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 9
+patch_margin_bottom = 11
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo2" type="TextureRect" parent="."]
+[node name="Guide" type="TextureRect" parent="Guide_Box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 203.647
-margin_bottom = -623.353
 texture = ExtResource( 6 )
 stretch_mode = 4
 __meta__ = {
