@@ -7,10 +7,17 @@ onready var shopper_anim :Object = $Shopper_anim
 onready var tappable_scn :PackedScene = load("res://Objects/Tappable_object.tscn")
 var selected :Array = []
 var needed_types : Array = []
-var score :int = 0
 var selection_available :bool = true
+var time :float = 120.0
+
+func _process(delta):
+	time -= delta
+	$Time_label.text = str("Time ", int(time))
+	if time <= 0:
+		get_tree().change_scene_to(load("res://Levels/Game_over_screen.tscn"))
 
 func _ready() -> void:
+	Global.score = 0
 	Global.level = self
 	set_new_hand()
 	select_needed_types()
@@ -34,21 +41,21 @@ func _on_Trash_button_pressed() -> void:
 
 func _on_Okay_button_pressed() -> void:
 	var correct :int = 0
-	print(needed_types)
-	for y in selected:
-		print(y.type)
+#	print(needed_types)
+#	for y in selected:
+#		print(y.type)
 	for j in needed_types:
 		for i in selected:
 			if i.type == j:
 				correct += 1
 	if correct >= needed_types.size():
-		score += 1
-		score_lbl.text = str(score)
+		Global.score += 1
+		score_lbl.text = str(Global.score)
 		anim.play("love")
 		shopper_anim.play("new_shopper")
 	else:
-		score -= 1
-		score_lbl.text = str(score)
+		Global.score -= 1
+		score_lbl.text = str(Global.score)
 		anim.play("hate")
 		shopper_anim.play("new_shopper")
 	trash_hand()
