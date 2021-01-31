@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Objects/Graphics/Item_Failure_Goo.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Graphics/Alchemy_Circle.png" type="Texture" id=8]
+[ext_resource path="res://shaders/bubble.shader" type="Shader" id=9]
 [ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
 [ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
@@ -72,6 +73,12 @@ shader = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 19 )
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 9 )
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 14 )
@@ -720,6 +727,7 @@ __meta__ = {
 }
 
 [node name="Speech_Bubble_Left" type="NinePatchRect" parent="."]
+material = SubResource( 19 )
 margin_left = 88.7242
 margin_top = 299.208
 margin_right = 188.724
@@ -733,7 +741,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Requested_item" parent="." instance=ExtResource( 7 )]
+position = Vector2( 135, 335 )
+
 [node name="Speech_Bubble_Right" type="NinePatchRect" parent="."]
+material = SubResource( 20 )
 margin_left = 283.561
 margin_top = 164.005
 margin_right = 427.561
@@ -750,7 +762,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Speech_Bubble_Right"]
 margin_left = 17.166
 margin_top = 12.2639
-margin_right = 144.166
+margin_right = 139.166
 margin_bottom = 141.264
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -760,9 +772,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Requested_item" parent="." instance=ExtResource( 7 )]
-position = Vector2( 137.532, 339.374 )
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
@@ -811,7 +820,6 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="."]
-visible = false
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 502.0
