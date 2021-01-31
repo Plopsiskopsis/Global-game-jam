@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Objects/Graphics/Item_Failure_Goo.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Requested_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Graphics/Alchemy_Circle.png" type="Texture" id=8]
-[ext_resource path="res://Objects/temp_speech_bubble.PNG" type="Texture" id=9]
 [ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
 [ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
@@ -80,10 +79,7 @@ shader = ExtResource( 14 )
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 14 )
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = ExtResource( 14 )
-
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 resource_name = "hate1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
@@ -122,7 +118,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 17 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 resource_name = "hate2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
@@ -161,7 +157,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 22 ), ExtResource( 20 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -187,7 +183,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 18 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 resource_name = "love2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
@@ -214,7 +210,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 21 ), ExtResource( 20 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=15]
 resource_name = "enter_shopper1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -253,7 +249,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/path = NodePath("Speech_Bubble_Right:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -264,8 +260,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Speech_Bubble_Left:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=16]
 resource_name = "enter_shopper2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -304,7 +312,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/path = NodePath("Speech_Bubble_Left:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -315,8 +323,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Speech_Bubble_Right:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
 tracks/0/interp = 1
@@ -353,25 +373,13 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -379,8 +387,32 @@ tracks/4/keys = {
 "method": "select_shopper"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Speech_Bubble_Left:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Speech_Bubble_Right:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=18]
 resource_name = "new_shopper2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
@@ -418,31 +450,43 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "select_shopper"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Speech_Bubble_Left:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Speech_Bubble_Right:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Level" type="Node"]
@@ -703,19 +747,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Requested_item" parent="." instance=ExtResource( 7 )]
-position = Vector2( 137.532, 339.374 )
-
-[node name="temp_speech_bubble" type="Sprite" parent="."]
-material = SubResource( 9 )
-position = Vector2( 358.734, 258.757 )
-texture = ExtResource( 9 )
-
-[node name="Label" type="Label" parent="temp_speech_bubble"]
-margin_left = -58.007
-margin_top = -82.4881
-margin_right = 68.993
-margin_bottom = 46.5119
+[node name="Label" type="Label" parent="Speech_Bubble_Right"]
+margin_left = 17.166
+margin_top = 12.2639
+margin_right = 144.166
+margin_bottom = 141.264
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -725,9 +761,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Requested_item" parent="." instance=ExtResource( 7 )]
+position = Vector2( 137.532, 339.374 )
+
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 9 )
 margin_left = 9.58368
 margin_top = 865.183
 margin_right = 90.5837
@@ -739,7 +778,7 @@ __meta__ = {
 
 [node name="Okay_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 11 )
+material = SubResource( 10 )
 margin_left = 402.915
 margin_top = 863.769
 margin_right = 509.915
@@ -787,16 +826,16 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate1 = SubResource( 13 )
-anims/hate2 = SubResource( 14 )
-anims/love1 = SubResource( 15 )
-anims/love2 = SubResource( 16 )
+anims/hate1 = SubResource( 11 )
+anims/hate2 = SubResource( 12 )
+anims/love1 = SubResource( 13 )
+anims/love2 = SubResource( 14 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/enter_shopper1 = SubResource( 17 )
-anims/enter_shopper2 = SubResource( 18 )
-anims/new_shopper1 = SubResource( 19 )
-anims/new_shopper2 = SubResource( 20 )
+anims/enter_shopper1 = SubResource( 15 )
+anims/enter_shopper2 = SubResource( 16 )
+anims/new_shopper1 = SubResource( 17 )
+anims/new_shopper2 = SubResource( 18 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 253.227, 952.203 )
@@ -817,6 +856,7 @@ text = "Time XX"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]

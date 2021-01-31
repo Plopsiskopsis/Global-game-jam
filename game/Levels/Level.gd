@@ -126,8 +126,8 @@ func select_needed_types() -> void:
 	var rando :int = randi() % 2
 	match rando:
 		0:
-			$temp_speech_bubble/Label.text = str("???", " ", needed_types[1], " ", needed_types[2])
+			$Speech_Bubble_Right/Label.text = str("???", " ", needed_types[1], " ", needed_types[2])
 		1:
-			$temp_speech_bubble/Label.text = str(needed_types[0], " ", "???", " ", needed_types[2])
+			$Speech_Bubble_Right/Label.text = str(needed_types[0], " ", "???", " ", needed_types[2])
 		2:
-			$temp_speech_bubble/Label.text = str(needed_types[0], " ", needed_types[1], " ", "???")
+			$Speech_Bubble_Right/Label.text = str(needed_types[0], " ", needed_types[1], " ", "???")
