@@ -5,6 +5,8 @@ onready var score_lbl :Object = $Score
 onready var anim :Object = $AnimationPlayer
 onready var shopper_anim :Object = $Shopper_anim
 onready var tappable_scn :PackedScene = load("res://Objects/Tappable_object.tscn")
+
+var npc :int = 1
 var selected :Array = []
 var needed_types : Array = []
 var selection_available :bool = true
@@ -27,7 +29,7 @@ func _on_TextureButton_pressed() -> void:
 	get_tree().change_scene_to(load("res://Menu/Menu.tscn"))
 
 func tapped(obj :Object) -> void:
-	tap_tween.interpolate_property(obj, "rect_position", obj.rect_position, Vector2(120.0 + rand_range(0.0, 250.0), 870.0 + rand_range(0.0, 50.0)), 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tap_tween.interpolate_property(obj, "rect_position", obj.rect_position, Vector2(130.0 + rand_range(0.0, 200.0), 870.0 + rand_range(0.0, 70.0)), 1.0, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tap_tween.start()
 	selected.append(obj)
 	if selected.size() >= 3:
@@ -51,15 +53,33 @@ func _on_Okay_button_pressed() -> void:
 	if correct >= needed_types.size():
 		Global.score += 1
 		score_lbl.text = str(Global.score)
-		anim.play("love")
-		shopper_anim.play("new_shopper")
+		if npc == 1:
+			anim.play("love1")
+			shopper_anim.play("new_shopper1")
+		else:
+			anim.play("love2")
+			shopper_anim.play("new_shopper2")
 	else:
 		Global.score -= 1
 		score_lbl.text = str(Global.score)
-		anim.play("hate")
-		shopper_anim.play("new_shopper")
+		if npc == 1:
+			anim.play("hate1")
+			shopper_anim.play("new_shopper1")
+		else:
+			anim.play("hate2")
+			shopper_anim.play("new_shopper2")
 	trash_hand()
 	selection_available = true
+
+func select_shopper():
+	if randi() % 2 == 0:
+		npc = 1
+		$Top_center/NPC.texture = load("res://Objects/Graphics/NPC_1_Default.png")
+		shopper_anim.play("enter_shopper1")
+	else:
+		npc = 2
+		$Top_center/NPC.texture = load("res://Objects/Graphics/NPC_2_Default.png")
+		shopper_anim.play("enter_shopper2")
 
 func trash_hand() -> void:
 	for i in get_tree().get_nodes_in_group("TAPPABLE"):

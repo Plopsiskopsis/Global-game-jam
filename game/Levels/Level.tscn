@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://Objects/Graphics/NPC_1_Unhappy.png" type="Texture" id=17]
 [ext_resource path="res://Objects/Graphics/NPC_1_Happy.png" type="Texture" id=18]
 [ext_resource path="res://shaders/clear3.shader" type="Shader" id=19]
+[ext_resource path="res://Objects/Graphics/NPC_2_Default.png" type="Texture" id=20]
+[ext_resource path="res://Objects/Graphics/NPC_2_Happy.png" type="Texture" id=21]
+[ext_resource path="res://Objects/Graphics/NPC_2_Unhappy.png" type="Texture" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -80,6 +83,7 @@ shader = ExtResource( 14 )
 shader = ExtResource( 15 )
 
 [sub_resource type="Animation" id=13]
+resource_name = "hate1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_hate:visible")
 tracks/0/interp = 1
@@ -117,7 +121,47 @@ tracks/2/keys = {
 "values": [ ExtResource( 17 ), ExtResource( 2 ) ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "hate2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center/temp_hate:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Item_Failure_Goo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Top_center/NPC:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ), ExtResource( 20 ) ]
+}
+
 [sub_resource type="Animation" id=14]
+resource_name = "love1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center/temp_love:visible")
 tracks/0/interp = 1
@@ -143,8 +187,202 @@ tracks/1/keys = {
 "values": [ ExtResource( 18 ), ExtResource( 2 ) ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "love2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center/temp_love:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center/NPC:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 28.84, 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ), ExtResource( 20 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "enter_shopper1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -37.2658, 193.288 ), Vector2( 127.961, 151.532 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "enter_shopper2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 276.126, 182.961 ), Vector2( 127.961, 151.532 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=15]
-length = 2.0
+resource_name = "new_shopper1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top_center:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 127.961, 151.532 ), Vector2( 276.126, 182.961 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top_center:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Requested_item:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("temp_speech_bubble:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "select_shopper"
+} ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "new_shopper2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top_center:rect_position")
 tracks/0/interp = 1
@@ -155,7 +393,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 127.961, 151.532 ), Vector2( 276.126, 182.961 ), Vector2( -37.2658, 193.288 ), Vector2( 127.961, 151.532 ) ]
+"values": [ Vector2( 127.961, 151.532 ), Vector2( -37.2658, 193.288 ), Vector2( 276.126, 182.961 ), Vector2( 127.961, 151.532 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Top_center:modulate")
@@ -192,6 +430,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "select_shopper"
+} ]
 }
 
 [node name="Level" type="Node"]
@@ -329,11 +581,11 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
 [node name="Requested_item" parent="." instance=ExtResource( 7 )]
-position = Vector2( 165.078, 356.325 )
+position = Vector2( 137.532, 339.374 )
 
 [node name="temp_speech_bubble" type="Sprite" parent="."]
 material = SubResource( 9 )
-position = Vector2( 386.28, 306.433 )
+position = Vector2( 358.734, 258.757 )
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="temp_speech_bubble"]
@@ -408,14 +660,19 @@ __meta__ = {
 [node name="Tap_tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hate = SubResource( 13 )
-anims/love = SubResource( 14 )
+anims/hate1 = SubResource( 13 )
+anims/hate2 = SubResource( 16 )
+anims/love1 = SubResource( 14 )
+anims/love2 = SubResource( 17 )
 
 [node name="Shopper_anim" type="AnimationPlayer" parent="."]
-anims/new_shopper = SubResource( 15 )
+anims/enter_shopper1 = SubResource( 18 )
+anims/enter_shopper2 = SubResource( 19 )
+anims/new_shopper1 = SubResource( 15 )
+anims/new_shopper2 = SubResource( 20 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 246.1, 905.876 )
+position = Vector2( 253.227, 952.203 )
 
 [node name="Item_Failure_Goo" type="Sprite" parent="."]
 visible = false
