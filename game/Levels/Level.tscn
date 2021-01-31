@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Graphics/NPC_1_Default.png" type="Texture" id=2]
@@ -11,9 +11,8 @@
 [ext_resource path="res://shaders/bubble.shader" type="Shader" id=9]
 [ext_resource path="res://Objects/temp_love.PNG" type="Texture" id=10]
 [ext_resource path="res://Objects/temp_hate.PNG" type="Texture" id=11]
-[ext_resource path="res://Objects/temp_okay.PNG" type="Texture" id=12]
-[ext_resource path="res://Objects/temp_trash.PNG" type="Texture" id=13]
-[ext_resource path="res://shaders/clear2.shader" type="Shader" id=14]
+[ext_resource path="res://Menu/UI_Trash_Can.png" type="Texture" id=12]
+[ext_resource path="res://Menu/UI_OK_Hand.png" type="Texture" id=13]
 [ext_resource path="res://shaders/clear.shader" type="Shader" id=15]
 [ext_resource path="res://Levels/Graphics/Background_Door.png" type="Texture" id=16]
 [ext_resource path="res://Objects/Graphics/NPC_1_Unhappy.png" type="Texture" id=17]
@@ -74,17 +73,11 @@ shader = ExtResource( 15 )
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 19 )
 
-[sub_resource type="ShaderMaterial" id=19]
-shader = ExtResource( 9 )
-
-[sub_resource type="ShaderMaterial" id=20]
-shader = ExtResource( 9 )
-
 [sub_resource type="ShaderMaterial" id=9]
-shader = ExtResource( 14 )
+shader = ExtResource( 9 )
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 14 )
+shader = ExtResource( 9 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "hate1"
@@ -727,7 +720,7 @@ __meta__ = {
 }
 
 [node name="Speech_Bubble_Left" type="NinePatchRect" parent="."]
-material = SubResource( 19 )
+material = SubResource( 9 )
 margin_left = 88.7242
 margin_top = 299.208
 margin_right = 188.724
@@ -745,7 +738,7 @@ __meta__ = {
 position = Vector2( 135, 335 )
 
 [node name="Speech_Bubble_Right" type="NinePatchRect" parent="."]
-material = SubResource( 20 )
+material = SubResource( 10 )
 margin_left = 283.561
 margin_top = 164.005
 margin_right = 427.561
@@ -775,24 +768,22 @@ __meta__ = {
 
 [node name="Trash_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 9 )
-margin_left = 9.58368
-margin_top = 865.183
-margin_right = 90.5837
-margin_bottom = 952.183
-texture_normal = ExtResource( 13 )
+margin_left = 41.6198
+margin_top = 866.518
+margin_right = 122.62
+margin_bottom = 953.518
+texture_normal = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Okay_button" type="TextureButton" parent="."]
 visible = false
-material = SubResource( 10 )
 margin_left = 402.915
 margin_top = 863.769
 margin_right = 509.915
 margin_bottom = 966.769
-texture_normal = ExtResource( 12 )
+texture_normal = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -864,7 +855,6 @@ text = "Time XX"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="Trash_button" to="." method="_on_Trash_button_pressed"]
 [connection signal="pressed" from="Okay_button" to="." method="_on_Okay_button_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_TextureButton_pressed"]
