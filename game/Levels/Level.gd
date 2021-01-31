@@ -123,4 +123,11 @@ func select_needed_types() -> void:
 			needed_types.append("Amber")
 			needed_types.append("Dragon scale")
 			needed_types.append("Ash")
-	$temp_speech_bubble/Label.text = str(needed_types[0], " ", needed_types[1], " ", needed_types[2])
+	var rando :int = randi() % 2
+	match rando:
+		0:
+			$Speech_Bubble_Right/Label.text = str("???", " ", needed_types[1], " ", needed_types[2])
+		1:
+			$Speech_Bubble_Right/Label.text = str(needed_types[0], " ", "???", " ", needed_types[2])
+		2:
+			$Speech_Bubble_Right/Label.text = str(needed_types[0], " ", needed_types[1], " ", "???")
