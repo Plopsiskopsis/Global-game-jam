@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Menu/Sieppaa.PNG" type="Texture" id=1]
+[ext_resource path="res://Levels/Graphics/Background_Tile.png" type="Texture" id=1]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Menu/blue_button00.png" type="Texture" id=3]
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Menu/Logo.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Menu_Guide.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -93,6 +95,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -880.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 203.647
+margin_bottom = -623.353
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -172,7 +198,6 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
 anims/start = SubResource( 1 )
-
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start_button" to="." method="_on_Start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Music_button" to="." method="_on_Music_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit_button" to="." method="_on_Quit_button_pressed"]
